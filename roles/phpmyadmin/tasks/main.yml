@@ -1,0 +1,7 @@
+- name: Ensure /etc/phpmyadmin directory exists
+  file:
+    path: /etc/phpmyadmin
+    state: directory
+    owner: root
+    group: root
+    mode: '0777'

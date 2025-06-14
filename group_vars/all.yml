@@ -1,0 +1,19 @@
+# Database configuration
+MYSQL_USER: root
+MYSQL_PASSWORD: rootpass
+MYSQL_DATABASE: wpdb
+
+# Host and domain
+DB_HOST: mariadb
+DOMAIN_NAME: localhost
+
+# WordPress admin credentials
+WP_ADMIN_LOGIN: tahameaizi_
+WP_ADMIN_EMAIL: tahameaizi@gmail.com
+WP_ADMIN_PASSWORD: 1337@tmp@admin
+
+
+# WordPress author credentials
+WP_AUTHOR_LOGIN: momeaizi
+WP_AUTHOR_EMAIL: mohamedtahameaizi@gmail.com
+WP_AUTHOR_PASSWORD: 1337@tmp@auth

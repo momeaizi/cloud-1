@@ -1,0 +1,93 @@
+services:
+  wordpress:
+    container_name: wordpress
+    image: wordpress:v1.0
+    build: /opt/wordpress
+    environment:
+      MYSQL_USER: {{ MYSQL_USER }}
+      MYSQL_PASSWORD: {{ MYSQL_PASSWORD }}
+      MYSQL_DATABASE: {{ MYSQL_DATABASE }}
+      DB_HOST: {{ DB_HOST }}
+      DOMAIN_NAME: {{ DOMAIN_NAME }}
+      WP_ADMIN_LOGIN: {{ WP_ADMIN_LOGIN }}
+      WP_ADMIN_EMAIL: {{ WP_ADMIN_EMAIL }}
+      WP_ADMIN_PASSWORD: {{ WP_ADMIN_PASSWORD }}
+      WP_AUTHOR_LOGIN: {{ WP_AUTHOR_LOGIN }}
+      WP_AUTHOR_EMAIL: {{ WP_AUTHOR_EMAIL }}
+      WP_AUTHOR_PASSWORD: {{ WP_AUTHOR_PASSWORD }}
+    restart: always
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - wpnet
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: {{ MYSQL_PASSWORD }}
+      MYSQL_DATABASE: {{ MYSQL_DATABASE }}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - wpnet
+
+  phpmyadmin:
+    image: phpmyadmin:fpm
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: {{ DB_HOST }}
+      PMA_USER: {{ MYSQL_USER }}
+      PMA_PASSWORD: {{ MYSQL_PASSWORD }}
+    volumes:
+      - phpmyadmin_data:/var/www/html
+    networks:
+      - wpnet
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/nginx/conf.d:/etc/nginx/conf.d
+      - /opt/nginx/certs:/etc/nginx/certs
+      - wordpress_data:/var/www/wordpress
+      - phpmyadmin_data:/var/www/html
+    depends_on:
+      - wordpress
+      - phpmyadmin
+    networks:
+      - wpnet
+
+
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /etc/wordpress
+      o: bind
+    
+  phpmyadmin_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /etc/phpmyadmin
+      o: bind
+
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /etc/mariadb
+      o: bind
+
+networks:
+  wpnet:

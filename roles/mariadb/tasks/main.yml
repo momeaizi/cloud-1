@@ -1,0 +1,7 @@
+- name: Ensure /etc/mariadb directory exists
+  file:
+    path: /etc/mariadb
+    state: directory
+    owner: root
+    group: root
+    mode: '0777'

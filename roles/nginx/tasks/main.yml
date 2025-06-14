@@ -1,0 +1,27 @@
+- name: Ensure /opt/nginx directory exists
+  file:
+    path: /opt/nginx
+    state: directory
+    mode: '0755'
+
+- name: Ensure /opt/nginx/conf.d directory exists
+  file:
+    path: /opt/nginx/conf.d
+    state: directory
+    mode: '0755'
+
+- name: Ensure /opt/nginx/certs directory exists
+  file:
+    path: /opt/nginx/certs
+    state: directory
+    mode: '0755'
+
+- name: Copy certs and config files
+  copy:
+    src: "{{ item.src }}"
+    dest: "/opt/nginx/{{ item.dest }}"
+    mode: '0644'
+  with_items:
+    - { src: "conf.d/default.conf", dest: "conf.d/default.conf" }
+    - { src: "certs/selfsigned.crt", dest: "certs/selfsigned.crt" }
+    - { src: "certs/selfsigned.key", dest: "certs/selfsigned.key" }

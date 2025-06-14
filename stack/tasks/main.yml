@@ -1,0 +1,15 @@
+- name: Ensure /opt/stack directory exists
+  file:
+    path: /opt/stack
+    state: directory
+    mode: '0755'
+
+- name: Generate docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/stack/docker-compose.yml
+
+- name: Launch stack containers
+  shell: docker-compose up -d
+  args:
+    chdir: /opt/stack

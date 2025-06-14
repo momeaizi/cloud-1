@@ -1,0 +1,35 @@
+- name: Ensure /opt/wordpress directory exists
+  file:
+    path: /opt/wordpress
+    state: directory
+    mode: '0755'
+
+- name: Ensure /opt/wordpress/conf directory exists
+  file:
+    path: /opt/wordpress/conf
+    state: directory
+    mode: '0755'
+
+- name: Ensure /opt/wordpress/tools directory exists
+  file:
+    path: /opt/wordpress/tools
+    state: directory
+    mode: '0755'
+
+- name: Copy Dockerfile and config files
+  copy:
+    src: "{{ item.src }}"
+    dest: "/opt/wordpress/{{ item.dest }}"
+    mode: '0644'
+  with_items:
+    - { src: "Dockerfile", dest: "Dockerfile" }
+    - { src: "conf/php-fpm.conf", dest: "conf/php-fpm.conf" }
+    - { src: "tools/wp_install.sh", dest: "tools/wp_install.sh" }
+
+- name: Ensure /etc/wordpress directory exists
+  file:
+    path: /etc/wordpress
+    state: directory
+    owner: root
+    group: root
+    mode: '0777'

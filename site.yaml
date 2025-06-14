@@ -1,0 +1,10 @@
+- name: Set up Docker and Deploy Stack
+  hosts: myhosts
+  become: yes
+  roles:
+    - common
+    - mariadb
+    - wordpress
+    - phpmyadmin
+    - nginx
+    - stack
