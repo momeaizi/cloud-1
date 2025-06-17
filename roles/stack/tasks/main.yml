@@ -9,15 +9,18 @@
     dest: /opt/stack/docker-compose.yml
 
 - name: Launch stack containers
+  become: true
   shell: docker-compose up -d
   args:
     chdir: /opt/stack
 
 - name: Stop and remove all containers and volumes
+  become: true
   shell: docker-compose -f /opt/stack/docker-compose.yml down -v
   tags: [down]
 
 - name: Show live logs from all containers
+  become: true
   shell: docker-compose -f /opt/stack/docker-compose.yml logs --tail=50
   tags: [logs]
 
