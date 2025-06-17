@@ -2,19 +2,16 @@
   file:
     path: /opt/nginx
     state: directory
-    mode: '0755'
 
 - name: Ensure /opt/nginx/conf.d directory exists
   file:
     path: /opt/nginx/conf.d
     state: directory
-    mode: '0755'
 
 - name: Ensure /opt/nginx/certs directory exists
   file:
     path: /opt/nginx/certs
     state: directory
-    mode: '0755'
 
 - name: Copy certs and config files
   copy:

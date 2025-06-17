@@ -1,6 +1,5 @@
 - name: Set up Docker and Deploy Stack
-  hosts: myhosts
-  become: yes
+  hosts: all
   roles:
     - common
     - mariadb

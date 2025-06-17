@@ -2,7 +2,6 @@
   file:
     path: /opt/stack
     state: directory
-    mode: '0755'
 
 - name: Generate docker-compose file
   template:
@@ -13,3 +12,12 @@
   shell: docker-compose up -d
   args:
     chdir: /opt/stack
+
+- name: Stop and remove all containers and volumes
+  shell: docker-compose -f /opt/stack/docker-compose.yml down -v
+  tags: [down]
+
+- name: Show live logs from all containers
+  shell: docker-compose -f /opt/stack/docker-compose.yml logs --tail=50
+  tags: [logs]
+

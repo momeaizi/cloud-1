@@ -1,16 +1,19 @@
 
 - name: Update and Upgrade apt packages
+  become: true
   apt:
     update_cache: true
     upgrade: dist
   ignore_errors: true 
 
 - name: Install docker 
+  become: true
   apt:
     name: docker.io
     state: present
 
 - name: Install docker-compose
+  become: true
   apt:
     name: docker-compose
     state: present

@@ -1,6 +1,6 @@
-myhosts:
+all:
   hosts:
-    host1:
+    myserver:
+      # ansible_host: YOUR.SERVER.IP
       ansible_host: localhost
-      ansible_user: root
       ansible_port: 2222

@@ -1,1 +1,30 @@
-.vscode/*
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python/Ansible
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Docker
+*.pid
+*.sock
+
+# Secrets
+group_vars/all.yml
+.env
+
+# SSL Keys
+roles/nginx/files/certs/selfsigned.crt
+roles/nginx/files/certs/selfsigned.key
+
+# Archives
+*.zip
