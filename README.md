@@ -48,7 +48,6 @@ MYSQL_PASSWORD: mypassword
 MYSQL_DATABASE: wordpress_db
 DB_HOST: mariadb
 
-DOMAIN_NAME: example.com
 
 WP_ADMIN_LOGIN: admin
 WP_ADMIN_EMAIL: admin@example.com
