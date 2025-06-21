@@ -8,7 +8,7 @@ services:
       MYSQL_PASSWORD: {{ MYSQL_PASSWORD }}
       MYSQL_DATABASE: {{ MYSQL_DATABASE }}
       DB_HOST: {{ DB_HOST }}
-      DOMAIN_NAME: {{ DOMAIN_NAME }}
+      DOMAIN_NAME: {{ hostvars[inventory_hostname].ansible_host }}
       WP_ADMIN_LOGIN: {{ WP_ADMIN_LOGIN }}
       WP_ADMIN_EMAIL: {{ WP_ADMIN_EMAIL }}
       WP_ADMIN_PASSWORD: {{ WP_ADMIN_PASSWORD }}

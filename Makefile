@@ -1,11 +1,10 @@
-.PHONY: deploy clean logs
+.PHONY: deploy down clean
 
 deploy:
-	ansible-playbook -i inventory.yaml site.yaml --skip-tags "down,logs" --ask-become-pass
+	ansible-playbook -i inventory.yaml site.yaml --skip-tags "down, clean" --ask-become-pass
 
-clean:
+down:
 	ansible-playbook -i inventory.yaml site.yaml --tags down --ask-become-pass
 
-logs:
-	ansible-playbook -i inventory.yaml site.yaml --tags logs --ask-become-pass
-
+clean:
+	ansible-playbook -i inventory.yaml site.yaml --tags clean --ask-become-pass

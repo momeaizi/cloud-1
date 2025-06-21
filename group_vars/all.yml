@@ -5,7 +5,6 @@ MYSQL_DATABASE: wpdb
 
 # Host and domain
 DB_HOST: mariadb
-DOMAIN_NAME: localhost
 
 # WordPress admin credentials
 WP_ADMIN_LOGIN: tahameaizi_

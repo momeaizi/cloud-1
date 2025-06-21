@@ -16,11 +16,11 @@
 
 - name: Stop and remove all containers and volumes
   become: true
-  shell: docker-compose -f /opt/stack/docker-compose.yml down -v
+  shell: docker-compose -f /opt/stack/docker-compose.yml down
   tags: [down]
 
-- name: Show live logs from all containers
+- name: Stop and remove all containers and volumes
   become: true
-  shell: docker-compose -f /opt/stack/docker-compose.yml logs --tail=50
-  tags: [logs]
+  shell: docker-compose -f /opt/stack/docker-compose.yml down -v
+  tags: [clean]
 
