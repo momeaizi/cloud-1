@@ -19,8 +19,7 @@ __pycache__/
 *.sock
 
 # Secrets
-group_vars/all.yml
-.env
+vault-pass.txt
 
 # SSL Keys
 roles/nginx/files/certs/selfsigned.crt
