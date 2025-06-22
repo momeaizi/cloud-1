@@ -21,6 +21,6 @@
 
 - name: Stop and remove all containers and volumes
   become: true
-  shell: docker-compose -f /opt/stack/docker-compose.yml down -v
+  shell: docker-compose -f /opt/stack/docker-compose.yml down -v && rm -rf /etc/mariadb /etc/phpmyadmin /etc/wordpress 
   tags: [clean]
 

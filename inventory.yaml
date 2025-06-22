@@ -1,6 +1,9 @@
 all:
   hosts:
-    myserver:
+    vm1:
       # ansible_host: YOUR.SERVER.IP
-      ansible_host: localhost
-      ansible_port: 2222
+      ansible_host: 164.92.209.48
+      ansible_user: root
+    vm2:
+      ansible_host: 104.248.85.126
+      ansible_user: root
