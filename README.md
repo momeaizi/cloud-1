@@ -43,6 +43,8 @@ This project automates the entire deployment lifecycle of a WordPress infrastruc
 
 ## 🏗️ Architecture
 
+![Architecture Diagram](docs/cloud-1-architecture.png)
+
 The infrastructure consists of four containerized services orchestrated by Docker Compose and deployed via Ansible:
 
 - **Nginx**: TLS-terminating reverse proxy handling all external traffic on ports 80/443
