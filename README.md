@@ -379,7 +379,7 @@ This project is part of the 42 School curriculum.
 
 ## 📧 Contact
 
-**Mohamed Ait Maazi**  
+**Mohamed Taha Meaizi**  
 GitHub: [@momeaizi](https://github.com/momeaizi)
 
 ---
